@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgohod4p4tfne"
-path="res://.godot/imported/water_lillies.png-dbc11eac9ee10ffe8ebfaf2b67d2e5a6.ctex"
+uid="uid://ba8n8i2flf2ap"
+path="res://.godot/imported/wooden_door.png-7c04920200548fc75674095b96c03d05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/water_lillies.png"
-dest_files=["res://.godot/imported/water_lillies.png-dbc11eac9ee10ffe8ebfaf2b67d2e5a6.ctex"]
+source_file="res://assets/tilesets/interior/walls/wooden_door.png"
+dest_files=["res://.godot/imported/wooden_door.png-7c04920200548fc75674095b96c03d05.ctex"]
 
 [params]
 
