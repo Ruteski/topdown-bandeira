@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3jh36e33moqb"]
+
+[ext_resource type="Texture2D" uid="uid://s2kuih5540o6" path="res://assets/objects/objects.png" id="1_xdfcw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ugefp"]
+resource_name = "objects_terrain"
+texture = ExtResource("1_xdfcw")
+0:5/size_in_atlas = Vector2i(3, 4)
+0:5/0 = 0
+0:5/0/texture_origin = Vector2i(0, 18)
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.6157, -4.72252, 8, -6.30992, 11.4094, 0.833387, 11.4094, 7.97669, -3.47244, 8, -8, 8, -12.0047, 4.60347, -12.4016, -1.34929)
+6:7/size_in_atlas = Vector2i(2, 2)
+6:7/0 = 0
+6:7/0/texture_origin = Vector2i(0, 12)
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.0992126, -4.52409, 10.8142, -3.53197, 11.4094, 0.833387, 8, 3.21449, -1.28976, 3.41291, -9.62362, 3.41291, -11.0126, -1.34929, -8, -4.32567)
+8:6/size_in_atlas = Vector2i(2, 3)
+8:6/0 = 0
+8:6/0/texture_origin = Vector2i(0, 18)
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -2.34142, 5.65512, 3.80976, -1.28976, 3.41291, -5.45669, 3.21449, -6.25039, -1.74614, -0.297638, -2.73827)
+11:2/size_in_atlas = Vector2i(1, 2)
+11:2/0 = 0
+10:7/size_in_atlas = Vector2i(2, 2)
+10:7/0 = 0
+10:7/0/texture_origin = Vector2i(0, 5)
+10:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(11.0126, -3.13512, 11.4094, 0.436537, 9.82204, 3.61134, 1.28976, 3.80976, -6.05197, 4.00819, -11.8063, 1.62709, -12.0047, -3.92882, -8, -3.53197, -1.88504, -2.93669, 4.66299, -3.53197)
+10:0/size_in_atlas = Vector2i(2, 1)
+10:0/0 = 0
+10:0/0/texture_origin = Vector2i(0, 3)
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(14.7827, -4.52409, 14.1874, 0.833387, 14.7827, 4.60347, 10.6157, 4.40504, 10.6157, 1.23024, 2.67874, 1.23024, -10.6157, 1.03181, -10.6157, 4.00819, -15.3779, 4.20662, -15.1795, -4.52409, -8, -4.72252, -0.297638, -4.32567, 4.66299, -4.32567, 9.62362, -4.12724)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, 3)
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(6.53584, 2.39385, -6.69333, 2.55134, -6.69333, -4.37822, -0.297638, -4.32567, 4.66299, -4.32567, 6.37835, -4.06324)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 3)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(6.53584, 2.39385, -6.69333, 2.55134, -6.69333, -4.37822, -0.297638, -4.32567, 4.66299, -4.32567, 6.37835, -4.06324)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 3)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(6.53584, 3.33879, 4.80345, 5.22867, 1.49616, 5.38616, -3.38604, 4.7562, -6.53584, 1.92138, -6.69333, -4.37822, -0.297638, -4.32567, 4.66299, -4.32567, 6.69333, -4.22073)
+
+[sub_resource type="TileSet" id="TileSet_r5d2k"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ugefp")
+
+[node name="ObjectsTerrain" type="TileMap"]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_r5d2k")
+format = 2
+layer_0/y_sort_enabled = true
