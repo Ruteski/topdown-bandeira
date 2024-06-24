@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh7bscelfmow2"]
+[gd_scene load_steps=7 format=3 uid="uid://dh7bscelfmow2"]
 
 [ext_resource type="PackedScene" uid="uid://byt1lafag6fp2" path="res://scenes/terrain.tscn" id="1_slp8c"]
 [ext_resource type="PackedScene" uid="uid://dfb4gqey7f2ig" path="res://scenes/interior.tscn" id="2_bk2l0"]
 [ext_resource type="PackedScene" uid="uid://xjmaccbunwf1" path="res://scenes/player/player.tscn" id="2_ugcea"]
 [ext_resource type="PackedScene" uid="uid://d3jh36e33moqb" path="res://scenes/objects_terrain.tscn" id="3_f6tbs"]
 [ext_resource type="PackedScene" uid="uid://c666asmf7dgpf" path="res://scenes/components/door_component.tscn" id="5_b77nt"]
+[ext_resource type="PackedScene" uid="uid://dogmtyb5pslw3" path="res://scenes/enemy/slime.tscn" id="6_yione"]
 
 [node name="Level" type="Node2D"]
 
@@ -41,3 +42,8 @@ _animation_tree = NodePath("AnimationTree")
 [node name="ObjectsTerrain" parent="YSort" instance=ExtResource("3_f6tbs")]
 position = Vector2(163, 121)
 layer_0/tile_data = PackedInt32Array(393217, 0, 5)
+
+[node name="Slime" parent="YSort" node_paths=PackedStringArray("_texture", "_animation") instance=ExtResource("6_yione")]
+position = Vector2(-35, 24)
+_texture = NodePath("Texture")
+_animation = NodePath("Animation")

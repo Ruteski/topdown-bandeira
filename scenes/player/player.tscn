@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://xjmaccbunwf1"]
+[gd_scene load_steps=42 format=3 uid="uid://xjmaccbunwf1"]
 
 [ext_resource type="Texture2D" uid="uid://27w7ogqud3hi" path="res://assets/characters/player.png" id="1_wlko5"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_xrnht"]
@@ -389,6 +389,22 @@ tracks/5/keys = {
 "values": [Vector2(0, -12)]
 }
 
+[sub_resource type="Animation" id="Animation_urpmt"]
+resource_name = "death"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [54, 55, 56]
+}
+
 [sub_resource type="Animation" id="Animation_ernhr"]
 resource_name = "idle_down"
 length = 0.6
@@ -732,6 +748,7 @@ _data = {
 "attack_left": SubResource("Animation_riksu"),
 "attack_right": SubResource("Animation_0bce2"),
 "attack_up": SubResource("Animation_hl32g"),
+"death": SubResource("Animation_urpmt"),
 "idle_down": SubResource("Animation_ernhr"),
 "idle_left": SubResource("Animation_aio0e"),
 "idle_right": SubResource("Animation_eo5uy"),
@@ -763,6 +780,33 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_vm34i")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_7faq2")
 blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ufmtl"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1yhpt"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_76btn"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qh3mo"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_345yk"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_y5m7b"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ufmtl")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_1yhpt")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_76btn")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeBlendTree_qh3mo")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_345yk")
+blend_point_4/pos = Vector2(1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_in5ex"]
@@ -814,6 +858,8 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_k1kt2"]
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_7nsbl")
 states/attack/position = Vector2(327.689, 236.222)
+states/death/node = SubResource("AnimationNodeBlendSpace2D_y5m7b")
+states/death/position = Vector2(328, 307.333)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_rhgsq")
 states/idle/position = Vector2(328.222, 100.296)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_ky23y")
@@ -822,7 +868,7 @@ states/walk/position = Vector2(328.099, 167.333)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpgmh"]
 size = Vector2(10, 10)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animation_tree") groups=["player"]]
 script = ExtResource("1_xrnht")
 _animation_tree = NodePath("AnimationTree")
 
@@ -843,6 +889,7 @@ libraries = {
 autoplay = "idle_down"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 tree_root = SubResource("AnimationNodeStateMachine_k1kt2")
 anim_player = NodePath("../Animation")
 parameters/current_length = 0.0
@@ -870,6 +917,28 @@ parameters/attack/2/current_delta = null
 parameters/attack/3/current_length = null
 parameters/attack/3/current_position = null
 parameters/attack/3/current_delta = null
+parameters/death/current_length = Vector2(0, 0)
+parameters/death/current_position = Vector2(0, 0)
+parameters/death/current_delta = Vector2(0, 0)
+parameters/death/blend_position = Vector2(0, 0)
+parameters/death/0/current_length = null
+parameters/death/0/current_position = null
+parameters/death/0/current_delta = null
+parameters/death/1/current_length = null
+parameters/death/1/current_position = null
+parameters/death/1/current_delta = null
+parameters/death/2/current_length = null
+parameters/death/2/current_position = null
+parameters/death/2/current_delta = null
+parameters/death/3/current_length = null
+parameters/death/3/current_position = null
+parameters/death/3/current_delta = null
+parameters/death/3/output/current_length = null
+parameters/death/3/output/current_position = null
+parameters/death/3/output/current_delta = null
+parameters/death/4/current_length = null
+parameters/death/4/current_position = null
+parameters/death/4/current_delta = null
 parameters/idle/current_length = 0.6
 parameters/idle/current_position = 0.332501
 parameters/idle/current_delta = 0.025
@@ -913,5 +982,6 @@ debug_color = Color(0.760294, 0.452245, 7.70092e-07, 0.42)
 
 [node name="Camera" type="Camera2D" parent="."]
 
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

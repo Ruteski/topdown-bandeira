@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 var _state_machine
 var _is_attacking: bool = false
+var _is_dead: bool = false
 
 @export_category("Variables")
 @export var _move_speed: float = 64.0 # +/- 4 celulas por segundo
@@ -18,6 +19,9 @@ func _ready() -> void:
 
 	
 func _physics_process(_delta: float) -> void:
+	if _is_dead:
+		return 
+				
 	_move()
 	_attack()
 	_animate()
@@ -57,6 +61,7 @@ func _animate() -> void:
 	if velocity.length() > 2:
 		_state_machine.travel("walk")
 		return
+				
 	_state_machine.travel("idle")
 
 
@@ -75,3 +80,15 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.update_health(randi_range(1, 5))
+
+		
+func die() -> void:
+	_is_dead = true
+	_state_machine.travel("death")
+	await get_tree().create_timer(1.0).timeout
+	get_tree().reload_current_scene()
+	
+	
+func _on_animation_animation_finished(anim_name: StringName) -> void:
+	queue_free()
+	
