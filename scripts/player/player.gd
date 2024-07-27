@@ -79,7 +79,8 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.update_health(randi_range(1, 5))
+		#body.update_health(randi_range(1, 5))
+		body.update_health()
 
 		
 func die() -> void:
@@ -89,6 +90,6 @@ func die() -> void:
 	get_tree().reload_current_scene()
 	
 	
-func _on_animation_animation_finished(anim_name: StringName) -> void:
+func _on_animation_animation_finished(_anim_name: StringName) -> void:
 	queue_free()
 	

@@ -21,29 +21,24 @@ layer_1/tile_data = PackedInt32Array(917519, 1, 0, 917520, 1, 0, 917521, 1, 0, 9
 
 [node name="Components" type="Node2D" parent="."]
 
-[node name="DoorComponent" parent="Components" node_paths=PackedStringArray("_animation") instance=ExtResource("5_b77nt")]
+[node name="DoorComponent" parent="Components" instance=ExtResource("5_b77nt")]
 position = Vector2(309, 253)
 _teleport_position = Vector2(1000, 300)
-_animation = NodePath("Animation")
 
-[node name="DoorComponent2" parent="Components" node_paths=PackedStringArray("_animation") instance=ExtResource("5_b77nt")]
+[node name="DoorComponent2" parent="Components" instance=ExtResource("5_b77nt")]
 position = Vector2(998, 273)
 _teleport_position = Vector2(312, 284)
-_animation = NodePath("Animation")
 
 [node name="YSort" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
 
-[node name="Player" parent="YSort" node_paths=PackedStringArray("_animation_tree") instance=ExtResource("2_ugcea")]
+[node name="Player" parent="YSort" instance=ExtResource("2_ugcea")]
 position = Vector2(159, 247)
-_animation_tree = NodePath("AnimationTree")
 
 [node name="ObjectsTerrain" parent="YSort" instance=ExtResource("3_f6tbs")]
 position = Vector2(163, 121)
 layer_0/tile_data = PackedInt32Array(393217, 0, 5)
 
-[node name="Slime" parent="YSort" node_paths=PackedStringArray("_texture", "_animation") instance=ExtResource("6_yione")]
+[node name="Slime" parent="YSort" instance=ExtResource("6_yione")]
 position = Vector2(-35, 24)
-_texture = NodePath("Texture")
-_animation = NodePath("Animation")
